@@ -14,16 +14,33 @@
   </head>
 
   <body class="bg-secondary">
-    <h1 class="H1 m-5 text-center text-capitalize">
+    <h1 class="H1 m-5 text-center text-capitalize" id="tituloH1">
       ejercitando con funciones
     </h1>
-    <div class="border m-5 p-3 text-center">
-      <input class="m-2" />
-      <label class="m2">ingresa los numeros que deseas sumar</label>
-      <button class="btn btn-dark" onclick="sumar()">sumar</button>
+    <div id="contIteracion" class="border m-3 p-3 text-center bg-gradient">
+      <input
+        onchange="convertir()"
+        type="text"
+        placeholder="introducir un numero"
+        class="m-2"
+        id="ingreso"
+      />
+      <label class="m-2">EJERCICIO CONDICIONAL</label>
+      <button id="b1" class="btn btn-dark">boton</button>
+      <div class="border m-3 p-3 text-center bg-gradient" id="par">
+        NUMEROS PARES:
+      </div>
+      <div class="border m-3 p-3 text-center bg-gradient" id="impar">
+        NUMEROS IMPARES:
+      </div>
     </div>
-    <div class="border m-5 p-4">
-      <h3 class="h3">resultado</h3>
+    <div id="divResultado" class="border m-3 p-3 bg-gradient">
+      <button class="btn btn-dark m-3">resultado</button>
+      <h3 id="result" class="h3">la suma es:</h3>
+    </div>
+    <div id="relleno" class="border m-3 p-3 bg-gradient">
+      <button class="btn btn-dark m-3">resetear</button>
+      <h3 id="vacio" class="h3">esto se va a rellenar</h3>
     </div>
 
     <script src="app.js"></script>

@@ -7,36 +7,49 @@ const vacio = "";
 
 let nombre = prompt("por favor ingresa tu nombre");
 
-if (nombre == vacio) {
-  alert(`tu nombre: "${nombre}" esta vacio`);
-} else if (nombre.length < 8) {
-  alert(
-    `tu nombre: "${nombre}" es demasiado breve, ingrese 8 caracteres minimo`
-  );
+while (nombre == vacio) {
+  alert(`el nombre : "${nombre}" esta vacio`);
+  nombre = prompt(`tu nombre: "${nombre}" esta vacio`);
+}
+while (nombre.length < minimo) {
+  alert(`el nombre: "${nombre}" es menor a 8 digitos`);
+  nombre = prompt(`tu nombre: "${nombre}" tiene menos de 8 digitos`);
 }
 
 /* PROMPT DE USUARIO */
 
 let usuario = prompt("por favor ingresa tu Nombre de Usuario");
 
-if (usuario == vacio) {
+while (usuario.lastIndexOf(" ") !== -1) {
+    alert("por favor ingrese un usuario sin espacios");
+    usuario = prompt("ingrese nuevamente su usuario sin espacios");
+  }
+while (usuario == vacio) {
   alert(`el nombre de usuario: "${usuario}" esta vacio`);
-} else if (usuario.length < minimo) {
+  usuario = prompt(`ingrese nuevamente nombre de usuario`);
+}
+while (usuario.length < minimo) {
   alert(
     `USUARIO ERRONEO: " ${usuario}" (demasiado breve, ingrese 8 caracteres)`
   );
+  usuario = prompt(`ingrese nuevamente nombre de usuario`);
 }
 
 /* PROMPT DE CONTRASEÑA */
 
 let pass = prompt("por favor ingresa una contraseña");
 
-if (pass.length < minimo) {
-  alert(`"${pass}" CONTRASEÑA INSEGURA (ingrese al menos 8 digitos)`);
-} else if (pass.length == vacio) {
-  alert(`"${pass}" CONTRASEÑA ERRONEA (password vacio)`);
-} else if (pass.lastIndexOf(" ") !== -1) {
+while (pass.lastIndexOf(" ") !== -1) {
   alert("por favor ingrese una contraseña sin espacios");
+  pass = prompt("ingrese nuevamente su contraseña sin espacios");
+}
+while (pass.length < minimo) {
+  alert(`"CONTRASEÑA INSEGURA" (ingrese al menos 8 digitos)`);
+  pass = prompt("ingrese nuevamente su contraseña con 8 digitos o mas");
+}
+while (pass.length == vacio) {
+  alert(`"CONTRASEÑA ERRONEA" (password vacio)`);
+  pass = prompt("ingrese nuevamente su contraseña");
 }
 
 let saludo = () => {
@@ -47,12 +60,7 @@ saludo();
 
 let mail = prompt("ingrese nuevo email");
 
-if (!mail.match(/@/)) {
-    alert("el email no contine arroba");
-}else if (!mail.match(/0-9/)) {
-    alert("el email no contine numeros");
-}else if (!mail.match(/a-z/)) {
-    alert("el email no contine letras minusculas");
-}else if (!mail.match(/A-Z/)) {
-    alert("el email no contine letras Mayusculas");
+while(!mail.match(/@/)) {
+  alert("el email no contine arroba");
+  mail = prompt("ingrese nuevamente su mail");
 }

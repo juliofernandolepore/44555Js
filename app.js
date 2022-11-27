@@ -58,9 +58,15 @@ let saludo = () => {
 saludo();
 /* PROMPT DE EMAIL */
 
-let mail = prompt("ingrese nuevo email");
+let mail = prompt("ingrese su correo electronico");
 
 while(!mail.match(/@/)) {
   alert("el email no contine arroba");
   mail = prompt("ingrese nuevamente su mail");
+}
+
+function modificarTexto(){
+    document.getElementById('nombre').innerHTML = ` tu nombre es: "${nombre}"`
+    document.getElementById('user').innerHTML = ` tu nombre de usuario es "${usuario}"`
+    document.getElementById('mail').innerHTML = ` tu mail es: "${mail}"`
 }

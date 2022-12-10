@@ -13,18 +13,42 @@
     <title>PRE-ENTREGA 2</title>
   </head>
 
-  <body class="bg-secondary">
-    <h1 class="h1 m-3 p-3 border text-center">Pre-Entrega 2</h1>
-    <p>actualizando el codigo...</p>
-    <div class="m-3 p-3 border bg-info">
-      <h2 class="h2 m-3 p-3">tus datos registrados son los siguientes</h2>
+  <body class="bg-secondary h2 text-center">
+    <h1 class="h1 m-3 p-3 border text-center opacity-75">Pre-Entrega 2</h1>
+    <p class="text-center">actualizando el codigo...</p>
+    <div class="m-3 p-3 border bg-info border-3">
+      <h2 class="h2 m-3 p-3 text-center">
+        tus datos registrados son los siguientes
+      </h2>
       <p id="nombre" class="m-2 p-2 border bg-light">nombre completo</p>
       <p id="user" class="m-2 p-2 border bg-light">usuario</p>
       <p id="mail" class="m-2 p-2 border bg-light">mail</p>
     </div>
-    <button class="m-3 p-1 btn-primary border" onclick="modificarTexto()">
+    <button class="m-3 p-2 btn bg-info border-3" onclick="modificarTexto()">
       mostrar
     </button>
+    <section class="text-center w-85 bg-body">
+      <form id="formID" class="m-3 p-3" action="">
+        <label for="nombre">nombre</label>
+        <input type="text" />
+        <br />
+        <label for="mail">e-mail</label>
+        <input type="email" />
+        <br />
+        <label for="usuario">usuario</label>
+        <input type="text" />
+        <br />
+        <label for="password">contrasena</label>
+        <input type="password" />
+        <br />
+        <label for="edad">edad</label>
+        <input type="text" />
+      </form>
+      <button class="btn bg-info border-3" onclick="miFrom()">
+        mostrar
+      </button>
+      <div><p  class="m-3 p-3 border-4"></p id="vacio"></div>
+    </section>
     <script src="app.js"></script>
   </body>
 </html>

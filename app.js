@@ -66,7 +66,11 @@ while(!mail.match(/@/)) {
 }
 
 function modificarTexto(){
-    document.getElementById('nombre').innerHTML = ` tu nombre es: "${nombre}"`
-    document.getElementById('user').innerHTML = ` tu nombre de usuario es "${usuario}"`
-    document.getElementById('mail').innerHTML = ` tu mail es: "${mail}"`
+    document.querySelector('#nombre').innerHTML = ` tu nombre es: "${nombre}"`
+    document.querySelector('#user').innerHTML = ` tu nombre de usuario es "${usuario}"`
+    document.querySelector('#mail').innerHTML = ` tu mail es: "${mail}"`
 }
+
+/* pre entrega 2 - OBJETOS - ARREGLOS - DOM - */  
+
+

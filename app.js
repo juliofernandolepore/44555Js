@@ -73,4 +73,12 @@ function modificarTexto(){
 
 /* pre entrega 2 - OBJETOS - ARREGLOS - DOM - */  
 
+const contenedor = document.querySelector(".contenedor2")
+const tarjeta = document.createElement("div")
 
+tarjeta.className = "tarjeta"
+tarjeta.textContent = "CONTENIDO AGREGADO"
+
+console.log(tarjeta)
+
+contenedor.appendChild(tarjeta)

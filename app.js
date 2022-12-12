@@ -235,10 +235,19 @@ const ofertas = () => {
   console.log(`Productos con descuento: ${total}`);
 };
 
-const ordernar = () => {};
+const ordernar = (prodSuper) => {
+  const sliceProdSuper = prodSuper.slice();
 
-const filtradoProducto = () => {
-  for (variable in prodSuper) {
-    console.log(variable);
+  for (let i = 0; i < sliceProdSuper.length; i++) {
+    console.log(sliceProdSuper[i].producto);
   }
+  sliceProdSuper.reverse();
+  for (let i = 0; i < sliceProdSuper.length; i++) {
+    console.log(sliceProdSuper[i].producto);
+  }
+};
+
+const busqueda = () => {
+  let busqueda = prompt("que producto necesitas?");
+  console.log(busqueda);
 };

@@ -254,3 +254,47 @@ const todosLosProductos = () => {
     console.table(elemento);
   });
 };
+
+/* funcion con metodo filter() aplicado a array de objetos */
+
+const filtrar = () => {
+  const parametro = prompt(
+    "ingresa hasta cuanto pagarias por producto de acuerdo a tu presupuesto"
+  );
+  const filtrado = prodSuper.filter((i) => {
+    return i.precio < parametro;
+  });
+  console.table(filtrado);
+};
+
+filtrar();
+
+/* funcion con metodo find() aplicado a array */
+
+const paisesDelMundo = [
+  "argentina",
+  "ecuador",
+  "colombia",
+  "peru",
+  "bolivia",
+  "estados unidos",
+  "alemania",
+  "italia",
+  "francia",
+  "portugal",
+  "australia",
+];
+
+const miFind = () => {
+  const parametro = prompt("ingresa un pais").toLowerCase();
+  const filtrado = paisesDelMundo.find((res) => {
+    return res === parametro;
+  });
+  if (filtrado) {
+    console.log(`el pais "${filtrado}" si existe en el listado oculto`);
+  } else if (filtrado === undefined) {
+    console.log(`el pais seleccionado "${parametro}" no existe`);
+  }
+};
+
+miFind();

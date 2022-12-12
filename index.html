@@ -14,7 +14,7 @@
   </head>
 
   <body class="bg-secondary h2 text-center">
-    <h1 class="h1 m-2 p-2 border text-center opacity-75">Pre-Entrega 2</h1>
+    <h1 class="h1 m-2 p-2 border text-center opacity-75">Pre-Entrega 2 (consola + DOM) </h1>
     
     <button class="m-2 p-2 btn bg-info border-3" onclick="interaccion1()">REGISTRARME</button>
     <div class="m-2 p-2 border bg-info border-3">
@@ -26,29 +26,21 @@
       <p id="mail" class="m-2 p-2 border bg-light">mail</p>
     </div>
     
-
-    <button class="btn bg-info border-3" onclick="ofertas()">
-      productos con descuento (ver en consola xD)
+    <button class="btn bg-info border-3 m-2" onclick="todosLosProductos()">
+      todos los productos disponibles
     </button>
   </br>
-  </br>
-  <button class="btn bg-info border-3" onclick="busqueda()">
+    <button class="btn bg-info border-3 m-2" onclick="ofertas()">
+      productos con descuento
+    </button>
+  </br>  
+  <button class="btn bg-info border-3 m-2" onclick="busqueda()">
     busqueda de producto
   </button>
-</br>
-</br>
-    <button class="btn bg-info border-3" onclick="ordenar()">
+  </br>
+    <button class="btn bg-info border-3 m-2" onclick="ordenar()">
       cambiar el orden de productos listados
-    </button>
-    <section class="text-center w-85 bg-body"> 
-      <select name="seleccionar un metodo">
-        <option value="value1">filter</option>
-        <option value="value2" selected>reduce</option>
-        <option value="value3">map</option>
-      </select>  
-      <button class="btn bg-info border-3" onclick="filtradoProducto()">
-        mostrar
-      </button>
+    </button>    
       <div><p  class="m-3 p-3 border-4"></p id="vacio"></div>
     </section>
     

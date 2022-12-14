@@ -73,7 +73,50 @@ const interaccion1 = () => {
   document.querySelector("#mail").innerHTML = ` tu mail es: "${mail}"`;
 };
 
-/* pre entrega 2 - OBJETOS - ARREGLOS - DOM - */
+/* pre entrega 2 - OBJETOS - ARREGLOS - */
+
+/* Trabajando y practicando con objetos */
+const felino = {
+  nombre: "tutuca",
+  especie: "felino",
+  raza: "california",
+  edad: 3,
+  peso: 5,
+};
+
+console.log(`la raza de mi mascota es: ${felino.raza}`);
+
+class Persona {
+  constructor(argNombre, argApellido, argEdad, argPeso, argSexo, argSociable) {
+    (this.nombre = argNombre),
+      (this.apellido = argApellido),
+      (this.edad = argEdad),
+      (this.peso = argPeso),
+      (this.sexo = argSexo),
+      (this.sociable = argSociable);
+  }
+  misDatos() {
+    console.log(
+      `mi nombre es: ${this.nombre}, mi apellido es: ${this.apellido}, mi edad es: ${this.edad}`
+    );
+  }
+  esSociable() {
+    if (this.sociable == true) {
+      return `hacer amistad inmediatamente con el`;
+    } else {
+      return `necesita amigos`;
+    }
+  }
+}
+const individuo1 = new Persona("fernando", "lepore", 39, 90, "M", true);
+console.log(individuo1);
+individuo1.nombre = "julio";
+console.log(individuo1.nombre);
+individuo1.misDatos();
+console.log(individuo1.esSociable());
+
+const individuo2 = new Persona("javier", "torres", 45, 85, "M", false);
+individuo2.misDatos();
 
 const prodSuper = [
   {
@@ -238,13 +281,16 @@ const ordenar = () => {
 };
 
 const busqueda = () => {
-  let buscar = prompt("que producto necesitas?");
+  let buscar = " ";
+  buscar = prompt("que producto necesitas?");
   for (let i = 0; i < prodSuper.length; i++) {
     if (prodSuper[i].producto == buscar) {
       console.log(`tu busqueda fue: ${buscar}`);
       console.log(`id: ${prodSuper[i].id}`);
       console.log(`precio: ${prodSuper[i].precio}`);
       console.log(prodSuper[i].descripcion);
+    } else {
+      console.log("no encontre tu producto");
     }
   }
 };
@@ -258,12 +304,13 @@ const todosLosProductos = () => {
 /* funcion con metodo filter() aplicado a array de objetos */
 
 const filtrar = () => {
-  const parametro = prompt(
+  let parametro = prompt(
     "ingresa hasta cuanto pagarias por producto de acuerdo a tu presupuesto"
   );
   const filtrado = prodSuper.filter((i) => {
     return i.precio < parametro;
   });
+  console.log("segun el monto ingresado estos son los productos accesibles");
   console.table(filtrado);
 };
 
@@ -286,14 +333,16 @@ const paisesDelMundo = [
 ];
 
 const miFind = () => {
-  const parametro = prompt("ingresa un pais").toLowerCase();
+  let parametro = " ";
+  parametro = prompt("ingresa un pais").toLowerCase();
   const filtrado = paisesDelMundo.find((res) => {
     return res === parametro;
   });
   if (filtrado) {
-    console.log(`el pais "${filtrado}" si existe en el listado oculto`);
+    console.log(filtrado);
+    alert(`el pais seleccionado si existe en el listado oculto`);
   } else if (filtrado === undefined) {
-    console.log(`el pais seleccionado "${parametro}" no existe`);
+    alert(`el pais seleccionado no existe en el listado oculto de paises`);
   }
 };
 

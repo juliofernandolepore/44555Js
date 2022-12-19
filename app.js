@@ -282,7 +282,7 @@ const ordenar = () => {
 
 const busqueda = () => {
   let buscar = " ";
-  buscar = prompt("que producto necesitas?");
+  buscar = prompt("que producto necesitas?").toLowerCase();
   for (let i = 0; i < prodSuper.length; i++) {
     if (prodSuper[i].producto == buscar) {
       console.log(`tu busqueda fue: ${buscar}`);
@@ -290,7 +290,9 @@ const busqueda = () => {
       console.log(`precio: ${prodSuper[i].precio}`);
       console.log(prodSuper[i].descripcion);
     } else {
-      console.log("no encontre tu producto");
+      console.log(
+        `No pude encontrar: "${buscar.toUpperCase()}" entre el listado de productos`
+      );
     }
   }
 };
@@ -305,12 +307,14 @@ const todosLosProductos = () => {
 
 const filtrar = () => {
   let parametro = prompt(
-    "ingresa hasta cuanto pagarias por producto de acuerdo a tu presupuesto"
+    "¿hasta cuanto pagarias por producto de acuerdo a tu presupuesto?"
   );
   const filtrado = prodSuper.filter((i) => {
     return i.precio < parametro;
   });
-  console.log("segun el monto ingresado estos son los productos accesibles");
+  console.log(
+    `segun el monto ingresado: $${parametro} estos son los productos accesibles en la siguiente tabla `
+  );
   console.table(filtrado);
 };
 
@@ -334,15 +338,15 @@ const paisesDelMundo = [
 
 const miFind = () => {
   let parametro = " ";
-  parametro = prompt("ingresa un pais").toLowerCase();
+  parametro = prompt("INGRESA UN PAIS DE TU PREFERENCIA").toLowerCase();
   const filtrado = paisesDelMundo.find((res) => {
     return res === parametro;
   });
   if (filtrado) {
     console.log(filtrado);
-    alert(`el pais seleccionado si existe en el listado oculto`);
+    alert(`el pais seleccionado SI EXISTE en el listado oculto`);
   } else if (filtrado === undefined) {
-    alert(`el pais seleccionado no existe en el listado oculto de paises`);
+    alert(`el pais seleccionado NO EXISTE en el listado oculto de paises`);
   }
 };
 

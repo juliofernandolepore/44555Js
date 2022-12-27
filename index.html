@@ -10,13 +10,27 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-    <title>PRE-ENTREGA 2</title>
+    <title>INICIO</title>
   </head>
+  <header>    
+  </header>
 
   <body class="bg-secondary h2 text-center">
-    <h1 class="h1 m-2 p-2 border text-center opacity-75">Pre-Entrega 2 (consola + DOM) </h1>
+    <h1 class="h1 m-2 p-2 border text-center opacity-75">Pre-Entrega 3 (DOM Y EVENTOS) </h1>
     
-    <button class="m-2 p-2 btn bg-info border-3" onclick="interaccion1()">REGISTRARME</button>
+    <section id="" class="m-5 p-3 text-center border">
+      <form id="login">
+      <label><input  id="usuario" type="text"for="usuario" placeholder="usuario"></label>
+      <br>
+      <br>
+      <label><input id="password" type="text"for="pass" placeholder="contraseña"></label>
+      <br>
+      <br>
+      <label for="ingresar"><input id="ingresar"type="submit"></label>
+    </form>
+    </section> 
+    
+    <button id="interaccion" class="m-2 p-2 btn bg-info border-3" onclick="interaccion1()">REGISTRARME</button>
     <div class="m-2 p-2 border bg-info border-3">
       <h2 class="h2 m-2 p-2 text-center">
         tus datos registrados son los siguientes
@@ -26,19 +40,19 @@
       <p id="mail" class="m-2 p-2 border bg-light">mail</p>
     </div>
     
-    <button class="btn bg-info border-3 m-2" onclick="todosLosProductos()">
+    <button id="productos"class="btn bg-info border-3 m-2" onclick="todosLosProductos()">
       todos los productos disponibles
     </button>
   </br>
-    <button class="btn bg-info border-3 m-2" onclick="ofertas()">
+    <button id="ofertas"class="btn bg-info border-3 m-2" onclick="ofertas()">
       productos con descuento
     </button>
   </br>  
-  <button class="btn bg-info border-3 m-2" onclick="busqueda()">
+  <button id="busqueda" class="btn bg-info border-3 m-2" onclick="busqueda()">
     busqueda de producto
   </button>
   </br>
-    <button class="btn bg-info border-3 m-2" onclick="ordenar()">
+    <button id="ordenar" class="btn bg-info border-3 m-2" onclick="ordenar()">
       cambiar el orden de productos listados
     </button>    
       <div><p  class="m-3 p-3 border-4"></p id="vacio"></div>

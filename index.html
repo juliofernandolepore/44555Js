@@ -15,44 +15,40 @@
   <header>    
   </header>
 
-  <body class="bg-secondary h2 text-center">
+  <body class="bg-secondary h3">
     <h1 class="h1 m-2 p-2 border text-center opacity-75">Pre-Entrega 3 (DOM Y EVENTOS) </h1>
-    
-    <section id="" class="m-5 p-3 text-center border">
-      <form id="login">
+    <main class="text-center">
+    <button id="altaUsuario" class="btn bg-info border-3 text-center">Registrarme</button>
+    <div><button id="salir" class="btn bg-info border-2 m-2 text-end" style="display: none;">cerrar cesion</button></div>
+    <section id="contenedor-form" class=" bg-primary m-1 p-5 text-center border">
+      
+      <form id="login" class="p-3">
+        <h3 class="h3 text-center m-2">inicio de sesion</h3>
       <label><input  id="usuario" type="text"for="usuario" placeholder="usuario"></label>
       <br>
       <br>
       <label><input id="password" type="text"for="pass" placeholder="contraseña"></label>
       <br>
       <br>
-      <label for="ingresar"><input id="ingresar"type="submit"></label>
+      <label><input id="ingresar"type="submit"></label>
     </form>
+    
     </section> 
-    
-    <button id="interaccion" class="m-2 p-2 btn bg-info border-3" onclick="interaccion1()">REGISTRARME</button>
-    <div class="m-2 p-2 border bg-info border-3">
-      <h2 class="h2 m-2 p-2 text-center">
-        tus datos registrados son los siguientes
-      </h2>
-      <p id="nombre" class="m-2 p-2 border bg-light">nombre completo</p>
-      <p id="user" class="m-2 p-2 border bg-light">usuario</p>
-      <p id="mail" class="m-2 p-2 border bg-light">mail</p>
-    </div>
-    
-    <button id="productos"class="btn bg-info border-3 m-2" onclick="todosLosProductos()">
-      todos los productos disponibles
+    </main>
+     <section id="supermercado" style="display: none"class="bg-success border-3 text-center">   
+    <button id="todosLosProductos"class="btn bg-info border-3 m-2">
+      todos los productos disp.
     </button>
   </br>
-    <button id="ofertas"class="btn bg-info border-3 m-2" onclick="ofertas()">
-      productos con descuento
+    <button id="todasLasOfertas"class="btn bg-info border-3 m-2">
+      productos con desc.
     </button>
   </br>  
-  <button id="busqueda" class="btn bg-info border-3 m-2" onclick="busqueda()">
-    busqueda de producto
+  <button id="busqueda" class="btn bg-info border-3 m-2">
+    busqueda de prod.
   </button>
   </br>
-    <button id="ordenar" class="btn bg-info border-3 m-2" onclick="ordenar()">
+    <button id="ordenar" class="btn bg-info border-3 m-2">
       cambiar el orden de productos listados
     </button>    
       <div><p  class="m-3 p-3 border-4"></p id="vacio"></div>

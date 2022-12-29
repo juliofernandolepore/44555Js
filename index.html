@@ -15,13 +15,13 @@
   <header>    
   </header>
 
-  <body class="bg-secondary h3">
+  <body id="cuerpo" class="bg-secondary h3">
     <h1 class="h1 m-2 p-2 border text-center opacity-75">Pre-Entrega 3 (DOM Y EVENTOS) </h1>
     <main class="text-center">
-    <button id="altaUsuario" class="btn bg-info border-3 text-center">Registrarme</button>
+    
     <div><button id="salir" class="btn bg-info border-2 m-2 text-end" style="display: none;">cerrar cesion</button></div>
     <section id="contenedor-form" class=" bg-primary m-1 p-5 text-center border">
-      
+      <button id="altaUsuario" class="btn bg-info p-5">Registrarme</button>
       <form id="login" class="p-3">
         <h3 class="h3 text-center m-2">inicio de sesion</h3>
       <label><input  id="usuario" type="text"for="usuario" placeholder="usuario"></label>
@@ -31,12 +31,13 @@
       <br>
       <br>
       <label><input id="ingresar"type="submit"></label>
+      
     </form>
     
     </section> 
     </main>
      <section id="supermercado" style="display: none"class="bg-success border-3 text-center">   
-    <button id="todosLosProductos"class="btn bg-info border-3 m-2">
+    <button id="allProductos"class="btn bg-info border-3 m-2">
       todos los productos disp.
     </button>
   </br>
@@ -52,6 +53,7 @@
       cambiar el orden de productos listados
     </button>    
       <div><p  class="m-3 p-3 border-4"></p id="vacio"></div>
+        <div id="vacio"></div>
     </section>
     
     <script src="app.js"></script>

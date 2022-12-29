@@ -118,14 +118,6 @@ console.log(individuo1.esSociable());
 const individuo2 = new Persona("javier", "torres", 45, 85, "M", false);
 individuo2.misDatos();
 
-const sliceProdSuper = prodSuper.slice();
-
-const ordenar = () => {
-  sliceProdSuper.reverse();
-  console.table(sliceProdSuper);
-  console.log("********************");
-};
-
 const busqueda = () => {
   let buscar = " ";
   buscar = prompt("que producto necesitas?").toLowerCase();

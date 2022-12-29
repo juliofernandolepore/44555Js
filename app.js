@@ -10,6 +10,15 @@ const cerrar = document.querySelector("#salir");
 const supermercado = document.querySelector("#supermercado");
 const registrarse = document.querySelector("#altaUsuario");
 const rellenoMultiple = document.querySelector("#vacio");
+const ordenar = document.querySelector("#invertir");
+
+/* constantes de inputs (formulario) */
+const formulario = document.querySelector("#formRegistro");
+const nombre = document.querySelector("#nombre");
+const apellido = document.querySelector("#apellido");
+const correo = document.querySelector("#correo");
+const passForm = document.querySelector("#pass");
+const envioFormRegistro = document.querySelector("#alta");
 
 /* id botones para eventos en sesion activa */
 
@@ -191,7 +200,16 @@ fLogin.onsubmit = (evento) => {
   }
 };
 
-/* funcion scope general validacion de login (token en storage) */
+/* funcion scope general REUTILIZABLES */
+function aJson(value) {
+  return JSON.stringify(value);
+}
+function subitTodoAlSesionStorage(key, value) {
+  const soyJson = aJson(value);
+  sessionStorage.setItem(key, soyJson);
+}
+
+/* VERIFICACION DE ESTADO DE LOGIN PERMANENTE */
 
 function estadoLogin(clave) {
   if (clave !== true) {
@@ -201,6 +219,7 @@ function estadoLogin(clave) {
     cerrar.style.display = "block";
     supermercado.style.display = "block";
     registrarse.style.display = "none";
+    //funcion para insertar en sessionstorage copia de productos
   }
 }
 /* aqui es login porque es tal cual la llave esta definida en el local
@@ -209,6 +228,7 @@ estadoLogin(recupLS("login"));
 
 cerrar.onclick = () => {
   sessionStorage.removeItem("login");
+  sessionStorage.clear();
   cerrar.innerHTML = "tu sesion ha expirado, inicie sesion nuevamente";
   document.querySelector("h1").textContent = "tu sesion ha caducado";
   supermercado.style.display = "none";
@@ -217,30 +237,78 @@ cerrar.onclick = () => {
 };
 
 registrarse.onclick = () => {
-  contForm.style.display = "none";
-  cerrar.style.display = "none";
+  sessionStorage.clear();
+  sessionStorage.setItem("registo", true);
+  fLogin.style.display = "none";
+  formulario.style.display = "block";
 };
 
+const procesoDeregistro = () => {
+  if (sessionStorage.getItem("registro")) {
+    formulario.style.display = "block";
+  }
+};
+procesoDeregistro();
 /* eventos(onclick) dentro de SESION INICIADA */
+
+//const item = document.createElement("div");
+//item.textContent = "vacio";
 
 todosLosProductos.onclick = () => {
   prodSuper.forEach((elemento) => {
-    console.table(elemento);
+    const p = document.createElement("p");
+    p.style.color = "white";
+    p.style.marginLeft = "400px";
+    p.innerText = `${elemento.producto} y el precio es: ${elemento.precio}`;
+    document.body.appendChild(p);
   });
 };
 
 ofertas.onclick = () => {
-  let total = 0;
-  for (let i = 0; i < prodSuper.length; i++) {
-    if (prodSuper[i].oferta === true) {
-      console.log(`producto: ${prodSuper[i].producto}`);
-      console.log(`precio de lista: ${prodSuper[i].precio} pesos`);
-      let operacion = (prodSuper[i].precio * 25) / 100;
-      let descuentoAplicado = prodSuper[i].precio - operacion;
-      console.log(`precio final (descuento 25%): ${descuentoAplicado} pesos`);
-      console.log("*****************************");
-      total += 1;
+  prodSuper.forEach((elemento) => {
+    if (elemento.oferta) {
+      const p = document.createElement("p");
+      p.style.color = "white";
+      p.style.marginLeft = "400px";
+      p.innerText = `${elemento.producto}, precio ${
+        elemento.precio
+      } con descuento del 25%: ${elemento.precio * 0.75} pesos`;
+      document.body.appendChild(p);
     }
-  }
-  console.log(`Productos con descuento: ${total}`);
+  });
+};
+
+/* evento (onlick) - metodo reverse!!! */
+const sliceProdSuper = prodSuper.slice();
+
+ordenar.onclick = () => {
+  sliceProdSuper.reverse();
+  console.table(sliceProdSuper);
+  console.log("********************");
+};
+nombre.onchange = () => {
+  const parrafo = document.createElement("p");
+  parrafo.innerText = `"${nombre.value}" es un nombre muy corto`;
+  parrafo.style.color = "red";
+  document.body.appendChild(parrafo);
+};
+
+apellido.onchange = () => {
+  const p = document.createElement("p");
+  p.innerText = `"${apellido.value}" es un apellido muy corto`;
+  p.style.color = "red";
+  document.body.appendChild(p);
+};
+
+correo.onchange = () => {
+  const p = document.createElement("p");
+  p.innerText = `"${correo.value}" es un correo muy corto`;
+  p.style.color = "red";
+  document.body.appendChild(p);
+};
+passForm.onchange = () => {
+  const p = document.createElement("p");
+  p.innerText = `tu contraseña es muy corta`;
+  p.style.color = "red";
+  document.body.appendChild(p);
 };

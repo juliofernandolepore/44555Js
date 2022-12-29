@@ -265,14 +265,14 @@ todosLosProductos.onclick = () => {
 };
 
 ofertas.onclick = () => {
-  prodSuper.forEach((elemento) => {
-    if (elemento.oferta) {
+  prodSuper.forEach((e) => {
+    if (e.oferta) {
       const p = document.createElement("p");
       p.style.color = "white";
       p.style.marginLeft = "400px";
-      p.innerText = `${elemento.producto}, precio ${
-        elemento.precio
-      } con descuento del 25%: ${elemento.precio * 0.75} pesos`;
+      p.innerText = `${e.producto}, precio ${e.precio} con descuento del 25%: ${
+        e.precio * 0.75
+      } pesos`;
       document.body.appendChild(p);
     }
   });
@@ -282,9 +282,13 @@ ofertas.onclick = () => {
 const sliceProdSuper = prodSuper.slice();
 
 ordenar.onclick = () => {
-  sliceProdSuper.reverse();
-  console.table(sliceProdSuper);
-  console.log("********************");
+  sliceProdSuper.reverse().forEach((e) => {
+    const p = document.createElement("p");
+    p.style.color = "brown";
+    p.style.marginLeft = "200px";
+    p.innerText = `NOMBRE. ${e.producto} ----- DETALLE: ${e.descripcion}`;
+    document.body.appendChild(p);
+  });
 };
 nombre.onchange = () => {
   const parrafo = document.createElement("p");

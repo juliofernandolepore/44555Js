@@ -118,23 +118,6 @@ console.log(individuo1.esSociable());
 const individuo2 = new Persona("javier", "torres", 45, 85, "M", false);
 individuo2.misDatos();
 
-const busqueda = () => {
-  let buscar = " ";
-  buscar = prompt("que producto necesitas?").toLowerCase();
-  for (let i = 0; i < prodSuper.length; i++) {
-    if (prodSuper[i].producto == buscar) {
-      console.log(`tu busqueda fue: ${buscar}`);
-      console.log(`id: ${prodSuper[i].id}`);
-      console.log(`precio: ${prodSuper[i].precio}`);
-      console.log(prodSuper[i].descripcion);
-    } else {
-      console.log(
-        `No pude encontrar: "${buscar.toUpperCase()}" entre el listado de productos`
-      );
-    }
-  }
-};
-
 /* funcion con metodo filter() aplicado a array de objetos */
 
 const filtrar = () => {

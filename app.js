@@ -1,7 +1,7 @@
 /* PRE ENTREGA 3 - REFACTORIZANDO */
 
 /* identificadores manipulables (SOLO ID) */
-
+const vacio = "";
 const inpUser = document.querySelector("#usuario");
 const fLogin = document.querySelector("#login");
 const pass = document.querySelector("#password");
@@ -24,6 +24,8 @@ const envioFormRegistro = document.querySelector("#alta");
 
 const todosLosProductos = document.querySelector("#allProductos");
 const ofertas = document.querySelector("#todasLasOfertas");
+const btnBusqueda = document.querySelector("#busqueda");
+const datoBusqueda = document.querySelector("#search");
 
 /* array para trabajar (productos supermercado) */
 const prodSuper = [
@@ -167,8 +169,8 @@ const prodSuper = [
 /* CODIGO DURO (verifica login con base de datos simulacion ) */
 
 const constatar = {
-  usuario: "julio",
-  pass: "12345678",
+  usuario: "fernando",
+  pass: "123lepore",
 };
 
 /* LOCAl STORAGE */
@@ -289,6 +291,29 @@ ordenar.onclick = () => {
     p.innerText = `NOMBRE. ${e.producto} ----- DETALLE: ${e.descripcion}`;
     document.body.appendChild(p);
   });
+};
+
+btnBusqueda.onclick = () => {
+  const resultado = prodSuper.find(
+    (e) =>
+      e.producto == datoBusqueda.value ||
+      e.precio == datoBusqueda.value ||
+      e.descripcion == datoBusqueda.value
+  );
+
+  if (resultado === undefined) {
+    const p = document.createElement("p");
+    p.style.color = "yellow";
+    p.style.marginLeft = "200px";
+    p.innerText = `NO SE ENCONTRO "${datoBusqueda.value}" o no has ingresado un dato`;
+    document.body.appendChild(p);
+  } else {
+    const p = document.createElement("p");
+    p.style.color = "black";
+    p.style.marginLeft = "200px";
+    p.innerText = `tu item solicitado: "${resultado.producto}" (en stock)`;
+    document.body.appendChild(p);
+  }
 };
 nombre.onchange = () => {
   const parrafo = document.createElement("p");

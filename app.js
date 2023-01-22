@@ -26,6 +26,11 @@ formulario.onsubmit = (e) => {
   if(edad.value === ""){
     swal("el campo edad esta vacio!")
     return false
+  }
+  if (edad.value <= 0 || edad.value >= 120) {
+    swal("complete su edad en numeros por favor")
+    contenedor.innerHTML = "debe introducir un numero"
+    return false
   } 
   if(correo.value === ""){
     swal("el campo correo esta vacio!")
@@ -51,21 +56,37 @@ formulario.onsubmit = (e) => {
 
   contenedor.innerHTML = `${formulario.nombre.value} ${formulario.apellido.value} 
       <br>agregado exitosamente a nuestra base de datos`
-    swal(`${formulario.nombre.value}, agregado exitosamente al listado`)
-    formulario.reset()
+    
+      swal({
+        title: "CORRECTO!",
+        text: `bienvenido/a`,
+        icon: "agregado/a exitosamente",
+      });  
+      
+      formulario.reset()
 }
 
 const apiFuncion = (filtrar) => {
   fetch(`https://63c5b80ef80fabd877eeca38.mockapi.io/nuevos/usuariosTotales/${filtrar}`)
     .then(res => res.json())
     .then(data => {
-
+      if(data.nombre === undefined || data.apellido === undefined){
+       swal(`el id ${buscar.value} aun no existe en la base de datos`)
+       return false
+      }
       contenedor.innerHTML = `el resultado de tu busqueda por ID es: 
       <br> NOMBRE: ${data.nombre}, 
       <br> APELLIDO: ${data.apellido}, 
       <br> EDAD: ${data.edad},
       <br> CORREO ELECTRONICO ${data.correo}`
-
+      swal({
+        title: "resultado!",
+        text: `el resultado de tu busqueda por ID es: 
+         NOMBRE: ${data.nombre}, 
+         APELLIDO: ${data.apellido}, 
+         EDAD: ${data.edad},
+         CORREO ELECTRONICO ${data.correo}`
+      });
     })
     .catch(e => { alert("salio mal") })
 }
@@ -73,9 +94,16 @@ const apiFuncion = (filtrar) => {
 formulario2.onsubmit = (e) => {
   e.preventDefault()
   if (buscar.value === "") {
+    swal("el campo no debe estar vacio")
     contenedor.innerHTML = "la busqueda esta vacia, <br> por favor ingrese un ID"
     return false
   }
+  if (buscar.value <= 0 || buscar.value > 100) {
+    swal("id invalido")
+    contenedor.innerHTML = "debe introducir un numero"
+    return false
+  }
+  
   apiFuncion(buscar.value)
 }
 

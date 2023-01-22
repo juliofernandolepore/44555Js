@@ -12,28 +12,28 @@ const buscar = document.querySelector("#buscar")
 formulario.onsubmit = (e) => {
   e.preventDefault()
   if(nombre.value === ""){
-    swal("el campo nombre esta vacio!")
+    swal("atencion","coloque su nombre", "warning")
     return false
   }
   if(apellido.value === ""){
-    swal("el campo apellido esta vacio!")
+    swal("atencion","coloque su apellido", "warning")
     return false
   }   
   if(password.value === ""){
-    swal("el campo contraseña esta vacio!")
+    swal("atencion","introduzca su contraseña", "warning")
     return false
   }
   if(edad.value === ""){
-    swal("el campo edad esta vacio!")
+    swal("atencion","coloque su edad", "warning")
     return false
   }
   if (edad.value <= 0 || edad.value >= 120) {
-    swal("complete su edad en numeros por favor")
+    swal("atencion","complete su edad en numeros por favor", "warning")
     contenedor.innerHTML = "debe introducir un numero"
     return false
   } 
   if(correo.value === ""){
-    swal("el campo correo esta vacio!")
+    swal("atencion","el campo correo esta vacio!", "warning")
     return false
   } 
 
@@ -57,11 +57,7 @@ formulario.onsubmit = (e) => {
   contenedor.innerHTML = `${formulario.nombre.value} ${formulario.apellido.value} 
       <br>agregado exitosamente a nuestra base de datos`
     
-      swal({
-        title: "CORRECTO!",
-        text: `bienvenido/a`,
-        icon: "agregado/a exitosamente",
-      });  
+      swal("datos ingresados correctamente","bienvenido/a", "success");  
       
       formulario.reset()
 }
@@ -71,7 +67,7 @@ const apiFuncion = (filtrar) => {
     .then(res => res.json())
     .then(data => {
       if(data.nombre === undefined || data.apellido === undefined){
-       swal(`el id ${buscar.value} aun no existe en la base de datos`)
+       swal("cuidado",`el id ${buscar.value} aun no existe en la base de datos`, "error")
        return false
       }
       contenedor.innerHTML = `el resultado de tu busqueda por ID es: 
@@ -88,187 +84,22 @@ const apiFuncion = (filtrar) => {
          CORREO ELECTRONICO ${data.correo}`
       });
     })
-    .catch(e => { alert("salio mal") })
+    .catch(e => { swal("cuidado","salio mal","warning") })
 }
 
 formulario2.onsubmit = (e) => {
   e.preventDefault()
   if (buscar.value === "") {
-    swal("el campo no debe estar vacio")
+    swal("cuidado","el campo no debe estar vacio","error")
     contenedor.innerHTML = "la busqueda esta vacia, <br> por favor ingrese un ID"
     return false
   }
   if (buscar.value <= 0 || buscar.value > 100) {
-    swal("id invalido")
+    swal("atencion","id invalido","error")
     contenedor.innerHTML = "debe introducir un numero"
     return false
   }
   
   apiFuncion(buscar.value)
 }
-
-
-const constatar = {
-  usuario: "fernando",
-  pass: "123lepore",
-};
-
-const upLocSt = (llave, valor) => {
-  sessionStorage.setItem(llave, JSON.stringify(valor));
-
-};
-
-
-const recupLS = (llave) => {
-  return JSON.parse(sessionStorage.getItem(llave));
-};
-
-fLogin.onsubmit = (evento) => {
-  evento.preventDefault();
-  if (inpUser.value === constatar.usuario && pass.value === constatar.pass) {
-    upLocSt("login", true);
-    contForm.style.display = "none";
-    cerrar.style.display = "block";
-    cerrar.textContent = "cerrar sesion";
-    supermercado.style.display = "block";
-    document.querySelector("h1").textContent = "BIENVENIDO";
-  } else {
-    inpUser.style.border = "3px solid red";
-    pass.style.border = "3px solid red";
-  }
-};
-
-
-function aJson(value) {
-  return JSON.stringify(value);
-}
-function subitTodoAlSesionStorage(key, value) {
-  const soyJson = aJson(value);
-  sessionStorage.setItem(key, soyJson);
-}
-
-function estadoLogin(clave) {
-  if (clave !== true) {
-    contForm.style.display = "flex";
-  } else {
-    contForm.style.display = "none";
-    cerrar.style.display = "block";
-    supermercado.style.display = "block";
-    registrarse.style.display = "none";
-    
-  }
-}
-
-estadoLogin(recupLS("login"));
-
-cerrar.onclick = () => {
-  sessionStorage.removeItem("login");
-  sessionStorage.clear();
-  cerrar.innerHTML = "tu sesion ha expirado, inicie sesion nuevamente";
-  document.querySelector("h1").textContent = "tu sesion ha caducado";
-  supermercado.style.display = "none";
-  estadoLogin(recupLS("login"));
-  registrarse.style.display = "block";
-};
-
-registrarse.onclick = () => {
-  sessionStorage.clear();
-  sessionStorage.setItem("registo", true);
-  fLogin.style.display = "none";
-  formulario.style.display = "block";
-};
-
-const procesoDeregistro = () => {
-  if (sessionStorage.getItem("registro")) {
-    formulario.style.display = "block";
-  }
-};
-procesoDeregistro();
-
-
-todosLosProductos.onclick = () => {
-  prodSuper.forEach((elemento) => {
-    const p = document.createElement("p");
-    p.style.color = "white";
-    p.style.marginLeft = "400px";
-    p.innerText = `${elemento.producto} y el precio es: ${elemento.precio}`;
-    document.body.appendChild(p);
-  });
-};
-
-ofertas.onclick = () => {
-  prodSuper.forEach((e) => {
-    if (e.oferta) {
-      const p = document.createElement("p");
-      p.style.color = "white";
-      p.style.marginLeft = "400px";
-      p.innerText = `${e.producto}, precio ${e.precio} con descuento del 25%: ${
-        e.precio * 0.75
-      } pesos`;
-      document.body.appendChild(p);
-    }
-  });
-};
-
-/* evento (onlick) - metodo reverse!!! */
-const sliceProdSuper = prodSuper.slice();
-
-ordenar.onclick = () => {
-  sliceProdSuper.reverse().forEach((e) => {
-    const p = document.createElement("p");
-    p.style.color = "brown";
-    p.style.marginLeft = "200px";
-    p.innerText = `NOMBRE. ${e.producto} ----- DETALLE: ${e.descripcion}`;
-    document.body.appendChild(p);
-  });
-};
-
-btnBusqueda.onclick = () => {
-  const resultado = prodSuper.find(
-    (e) =>
-      e.producto == datoBusqueda.value ||
-      e.precio == datoBusqueda.value ||
-      e.descripcion == datoBusqueda.value
-  );
-
-  if (resultado === undefined) {
-    const p = document.createElement("p");
-    p.style.color = "yellow";
-    p.style.marginLeft = "200px";
-    p.innerText = `NO SE ENCONTRO "${datoBusqueda.value}" o no has ingresado un dato`;
-    document.body.appendChild(p);
-  } else {
-    const p = document.createElement("p");
-    p.style.color = "black";
-    p.style.marginLeft = "200px";
-    p.innerText = `tu item solicitado: "${resultado.producto}" (en stock)`;
-    document.body.appendChild(p);
-  }
-};
-nombre.onchange = () => {
-  const parrafo = document.createElement("p");
-  parrafo.innerText = `"${nombre.value}" es un nombre muy corto`;
-  parrafo.style.color = "red";
-  document.body.appendChild(parrafo);
-};
-
-apellido.onchange = () => {
-  const p = document.createElement("p");
-  p.innerText = `"${apellido.value}" es un apellido muy corto`;
-  p.style.color = "red";
-  document.body.appendChild(p);
-};
-
-correo.onchange = () => {
-  const p = document.createElement("p");
-  p.innerText = `"${correo.value}" es un correo muy corto`;
-  p.style.color = "red";
-  document.body.appendChild(p);
-};
-passForm.onchange = () => {
-  const p = document.createElement("p");
-  p.innerText = `tu contraseña es muy corta`;
-  p.style.color = "red";
-  document.body.appendChild(p);
-};
 

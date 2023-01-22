@@ -38,7 +38,7 @@
               <a class="nav-link" href="productos.html">Productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="inicioSesion.html">Inicio de Sesion</a>
+              <a class="nav-link" href="busquedaProductos.html">Busqueda de productos</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="registro.html">Registrarse</a>
@@ -54,31 +54,32 @@
               <h1>
                 ADMINISTRACION DE PRODUCTOS DE SUPERMERCADO
               </h1>
-              <form id="formularioProductos" >
+              <h2>INGRESAR NUEVOS PRODUCTOS A LA DATABASE</h2>
+              <form id="formularioProductos" class="border m-3 p-2">
                 <label>
                     nombre del producto<input type="text" id="nombreProducto" placeholder="nombre del producto">
                 </label>
-                <br>
+                <br><br>
                 <label>
                     descripcion<input type="text" id="descripcion" placeholder="descripcion">
                 </label>
-                <br>
+                <br><br>
                 <label>
                     precio<input type="text" id="precio" placeholder="precio en pesos">
                 </label>
-                <br>
+                <br><br>
                 <label>
                   <select id="oferta">
                     <option value="true">en oferta</option>
                     <option value="false">sin oferta</option>
                   </select>
               </label>
-              <br>
+              <br><br>
               <select id="stock">
                 <option value="true">en stock</option>
                 <option value="false">sin stock</option>
               </select>
-              <br>
+              <br><br>
                 <label>
                     <input type="submit">
                 </label>
@@ -86,42 +87,14 @@
             <div>
               <p class="m-5"id="feedback"></p>
             </div> 
-            </section>
-            
-
-            <div><button id="salir" class="btn bg-info border-2 m-2 text-end" style="display: none;">cerrar cesion</button></div>
-             
-            </main>
-             <section id="supermercado" class="bg-primary border-3 text-center"> 
-              <label class="mt-4" for="">BUSCAR<input id="search" type="text" placeholder="producto/precio"></label>
-              <br>  
-            <button id="allProductos"class="btn bg-info border-3 m-2">
-              todos los productos disp.
-            </button>
-          </br>
-            <button id="todasLasOfertas"class="btn bg-info border-3 m-2">
-              productos con desc.
-            </button>
-          </br>
-          <br>
-          
-          <button id="busqueda" class="btn bg-info border-3 m-2">
-            busqueda de prod.
-          </button>
-          </br>
-            <button id="invertir" class="btn bg-info border-3 m-2">
-              cambiar el orden de productos listados
-            </button>    
-              <div><p  class="m-3 p-3 border-4"></p id="vacio"></div>
-                <div id="vacio"></div>
-            </section>
-                  
+            </section>                 
             
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="productos.js"></script>
   </body>
 </html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>catalogo de peliculas</title>
+    <title>registro y busqeuda de usuarios</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -35,10 +35,10 @@
               <a class="nav-link" href="peliculas.html">Peliculas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="productos.html">productos</a>
+              <a class="nav-link" href="productos.html">Productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="inicioSesion.html">Inicio de Sesion</a>
+              <a class="nav-link" href="busquedaProductos.html">Busqueda de productos</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="registro.html">Registrarse</a>
@@ -47,29 +47,55 @@
         </div>
       </div>
     </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-    <form id="formPelis"class="m-1 p-1 text-center">
-      <h1 class="h1 text-center mb-3">Peliculas y series</h1>
-      <div class="text-center">
-        <input type="text" placeholder="Coloca tu busqueda" name="consulta">
-        
-      </div>
-      <div>
-        <button class="btn btn-primary m-3">BUSCAR</button>
-      </div>
-      <div class="text-center mt-3"><p id="envio"></p></div>
+    <main class="m-3 text-center">
+      <h1 class="h1 text-center">Registrate en nuestro sitio</h1>
+      <form id="formulario" class="m-2">
+        <label>
+            nombre<input type="text" id="nombre" placeholder="coloque su nombre">
+        </label>
+        <br><br>
+        <label>
+            apellido<input type="text" id="apellido" placeholder="coloque su apellido">
+        </label>
+        <br><br>
+        <label>
+            contraseña<input type="password" id="password" placeholder="contraseña">
+        </label>
+        <br><br>
+        <label>
+          edad<input type="text" id="edad" placeholder="edad">
+      </label>
+      <br><br>
+      <label>
+          email<input type="email" id="correo" placeholder="correo electronico">
+      </label>
+      <br><br>
+        <label>
+            <input type="submit">
+        </label>
     </form>
-    <div class="contenedor"></div>
-</div>
-</div>
-</div>    
+  
+    <form id="formulario2" class="m-5">
+        <label>
+            <input type="text" id="buscar" placeholder="coloque el ID de usuario">
+        </label>
+        <br><br>
+        <label>
+            <input type="submit" value="solo resultados por id existente">
+        </label>
+    </form>
+    <div > 
+      <p id="visualizaciones"></p>       
+    </div>
+    </main>
+    
+    
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
-    ></script>       
-    <script src="peliculas.js"></script>   
+    ></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>       
+    <script src="app.js"></script>   
   </body>
 </html>

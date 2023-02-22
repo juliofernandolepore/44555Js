@@ -1,2 +1,3 @@
-# 44555Js
-coderhouse comision javascript 44555
+# Coderhouse: javascript 
+
+# comision: 44555

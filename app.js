@@ -35,6 +35,9 @@ const cargarArticulos = async () => {
 botonBusquedaInicio.addEventListener('click', ()=>{
   item += inputBusquedaInicio.value;
   cargarArticulos();
+  if (item){
+    item=""
+  }
 })
 
 function cards(arreglo) {

@@ -1,10 +1,9 @@
-const contenedorBusqueda = document.querySelector(".contenedor-busqueda");
-//const busqueda = document.querySelector("#busqueda");
-const inputBusqueda = document.querySelector("#inputBusqueda");
+const botonBusquedaInicio = document.querySelector(".botonBusquedaInicio");
+const inputBusquedaInicio = document.querySelector(".inputBusquedaInicio");
 
 const api = "https://api.mercadolibre.com/sites/MLA/search?q=";
-const item = "ssd";
-const limite = "&limit=30";
+let item = "";
+const limite = "&limit=18";
 const cargarArticulos = async () => {
   try {
     const respuesta = await fetch(`${api}${item}${limite}`);
@@ -31,7 +30,12 @@ const cargarArticulos = async () => {
     console.log(error);
   }
 };
-cargarArticulos();
+//cargarArticulos();
+
+botonBusquedaInicio.addEventListener('click', ()=>{
+  item += inputBusquedaInicio.value;
+  cargarArticulos();
+})
 
 function cards(arreglo) {
   const nodos = array.reduce(

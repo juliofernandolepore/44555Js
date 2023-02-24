@@ -1,9 +1,11 @@
+/* ------------------------------------------------------------------ */
 const botonBusquedaInicio = document.querySelector(".botonBusquedaInicio");
 const inputBusquedaInicio = document.querySelector(".inputBusquedaInicio");
-
 const api = "https://api.mercadolibre.com/sites/MLA/search?q=";
-let item = "";
+
 const limite = "&limit=18";
+let item = "";
+
 const cargarArticulos = async () => {
   try {
     const respuesta = await fetch(`${api}${item}${limite}`);
@@ -30,7 +32,6 @@ const cargarArticulos = async () => {
     console.log(error);
   }
 };
-//cargarArticulos();
 
 botonBusquedaInicio.addEventListener('click', ()=>{
   item += inputBusquedaInicio.value;
@@ -40,35 +41,7 @@ botonBusquedaInicio.addEventListener('click', ()=>{
   }
 })
 
-function cards(arreglo) {
-  const nodos = array.reduce(
-    (acc, element) => {
-      return (
-        acc +
-        `
-          <p>${element.title}<p/>
-      `
-      );
-    },
 
-    " "
-  );
-  contenedorBusqueda.innerHTML = nodos;
-}
-
-const fetchCustom = async (producto, limite) => {
-  const cantidadResultados = `&limit=${limite}`;
-  const apiMercadolibre = "https://api.mercadolibre.com/sites/MLA/search?q=";
-  fetch(apiMercadolibre + producto + cantidadResultados)
-    .then((r) => r.json())
-    .then((r) => {
-      const arreglo = r.results;
-      cards(arreglo);
-    })
-    .catch((e) => {
-      console.log(e, "error");
-    });
-};
 
 const fetchCustom1 = async (producto) => {
   const apiMercadolibre = "https://api.mercadolibre.com/sites/MLA/search?q=";

@@ -226,4 +226,26 @@ const resultado = prodSuper.forEach((e) => {
     } pesos`)
     return resultado
   }
-}) */
+})
+
+function cards(arregloFetch) {
+  const nodos = arregloFetch.reduce(
+    (acc, e) => {
+      return (
+        acc +
+        `
+      <div class="card" style="width: 10rem;">
+          <img src="${e.thumbnail}" class="card-img-top p-1" alt="${e.title}">
+        <div class="card-body">
+          <h5 class="card-title">${e.title}</h5>
+          <h5>Estado: ${e.condition}<h5>
+          <h5>precio: $${e.price}<h5>                  
+        </div>
+      </div>
+      `
+      );
+    }," "  );
+  contenedorCarrito.innerHTML = nodos;
+}
+
+*/

@@ -19,6 +19,15 @@ body {
 	
 }
 
+.contenedorCarrito {
+	display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+	padding: 50px;
+}
+
 .card { 
     border: 2px solid black;
     border-radius: 15%;

@@ -1,7 +1,6 @@
 const botonBusquedaInicio = document.querySelector(".botonBusquedaInicio");
 const inputBusquedaInicio = document.querySelector(".inputBusquedaInicio");
 const api = "https://api.mercadolibre.com/sites/MLA/search?q=";
-
 const limite = "&limit=36";
 let item = "";
 

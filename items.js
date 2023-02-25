@@ -1,18 +1,23 @@
-const inputCarrito = document.querySelector(".inputCarrito")
-const contenedorCarrito = document.querySelector(".contenedorCarrito")
-const btnBuscarCarrito = document.querySelector(".botonBusquedaCarrito")
+const inputCarrito = document.querySelector(".inputCarrito");
+const contenedorCarrito = document.querySelector(".contenedorCarrito");
+const btnBuscarCarrito = document.querySelector(".botonBusquedaCarrito");
 const api = "https://api.mercadolibre.com/sites/MLA/search?q=";
 let carrito = [];
-let preferencia =" ";
+let preferencia = " ";
 
-btnBuscarCarrito.addEventListener('click', ()=>{
+btnBuscarCarrito.addEventListener("click", () => {
   preferencia += inputCarrito.value;
-  fetchCustom()
-  if (preferencia){preferencia = "" }})
+  fetchCustom();
+  if (preferencia) {
+    preferencia = "";
+  }
+});
 
-const maquetadorDeCard = (arregloDelfetch)=>{
+const maquetadorDeCard = (arregloDelfetch) => {
   const todosLosItems = arregloDelfetch.reduce((acc, e) => {
-    return acc + `              
+    return (
+      acc +
+      `              
             <div class="card" id="item-${e.id}" style="width: 10rem;">
                 <img src="${e.thumbnail}" class="card-img-top p-1" alt="${e.title}">
               <div class="card-body">
@@ -22,39 +27,38 @@ const maquetadorDeCard = (arregloDelfetch)=>{
                 <h6 id="boton-${e.id}"class="boton-card btn btn-info btn-sm ">Agregar al carrito</h6>                
               </div>
             </div>
-            `;
-  },"");
+            `
+    );
+  }, "");
   document.querySelector(".contenedorCarrito").innerHTML = todosLosItems;
-}
+};
 
 const fetchCustom = async () => {
   try {
-    const peticion = await fetch(`${api}${preferencia}`)
-    const envolver = await peticion.json()
+    const peticion = await fetch(`${api}${preferencia}`);
+    const envolver = await peticion.json();
     const arreglo = await envolver.results;
     maquetadorDeCard(arreglo);
-    agregarCarrito(arreglo)
-    
+    agregarCarrito(arreglo);
   } catch (error) {
-    console.log(error)
-  } 
-  
+    console.log(error);
+  }
 };
 
-function agregarCarrito (a) {
-  const todosLosBotones = document.querySelectorAll(".boton-card")
-  todosLosBotones.forEach(e => {e.onclick = ()=>{
-    const id = e.id.slice(6)
-    console.log(id)
-    const filtroNodoConArrayFetch = a.find((e)=>{
-        return e.id == id
-    })
-    carrito.push(filtroNodoConArrayFetch)
-    localStorage.setItem("carrito", JSON.stringify(carrito))
-  }
-  })
-  
+function agregarCarrito(a) {
+  const todosLosBotones = document.querySelectorAll(".boton-card");
+  todosLosBotones.forEach((e) => {
+    e.onclick = () => {
+      const id = e.id.slice(6);
+      console.log(id);
+      const filtroNodoConArrayFetch = a.find((e) => {
+        return e.id == id;
+      });
+      carrito.push(filtroNodoConArrayFetch);
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+    };
+  });
 }
 
-const agregados = JSON.parse(localStorage.getItem("carrito"))
-carrito = agregados || []
+const agregados = JSON.parse(localStorage.getItem("carrito"));
+carrito = agregados || [];

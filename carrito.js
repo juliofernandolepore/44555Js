@@ -1,5 +1,6 @@
 const btnVaciarCarrito = document.querySelector("#vaciar")
-const informacionDelLocalStorage = JSON.parse(localStorage.getItem("carrito"))
+
+let informacionDelLocalStorage = JSON.parse(localStorage.getItem("carrito"))
 
 const cardDelete = (datosbrutos)=>{
     const todosLosItems = datosbrutos.reduce((acc, e) => {
@@ -27,3 +28,21 @@ btnVaciarCarrito.addEventListener("click", ()=>{
     cardDelete(informacionDelLocalStorage)
     document.querySelector(".contenido-carrito").innerHTML = "<h2>El carrito ahora esta vacio</h2>";    
 })
+
+function borrarDelCarrito (a) {
+    const botones = document.querySelectorAll(".boton-card")
+    botones.forEach(e => {e.onclick = ()=>{
+      const id = e.id.slice(6)
+      console.log(id)
+      const filtroNodoConArrayFetch = a.filter((e)=>{
+          return e.id !== id
+      })
+      informacionDelLocalStorage = filtroNodoConArrayFetch
+      localStorage.setItem("carrito", JSON.stringify(filtroNodoConArrayFetch))
+      cardDelete(informacionDelLocalStorage)
+      borrarDelCarrito(informacionDelLocalStorage)     
+    }
+    })    
+  }
+
+  borrarDelCarrito(informacionDelLocalStorage)

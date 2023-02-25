@@ -1,15 +1,9 @@
 const inputCarrito = document.querySelector(".inputCarrito")
 const contenedorCarrito = document.querySelector(".contenedorCarrito")
 const btnBuscarCarrito = document.querySelector(".botonBusquedaCarrito")
-//const btnVaciarCarrito = document.querySelector("#vaciar")
 const api = "https://api.mercadolibre.com/sites/MLA/search?q=";
 let carrito = [];
 let preferencia =" ";
-
-/* function vaciarCarrito (){
-    localStorage.clear()
-} */
-
 
 btnBuscarCarrito.addEventListener('click', ()=>{
   preferencia += inputCarrito.value;
@@ -47,8 +41,6 @@ const fetchCustom = async () => {
   
 };
 
-
-
 function agregarCarrito (a) {
   const todosLosBotones = document.querySelectorAll(".boton-card")
   todosLosBotones.forEach(e => {e.onclick = ()=>{
@@ -65,4 +57,4 @@ function agregarCarrito (a) {
 }
 
 const agregados = JSON.parse(localStorage.getItem("carrito"))
-carrito = agregados
+carrito = agregados || []

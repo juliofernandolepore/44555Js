@@ -33,17 +33,22 @@ const fetchCustom = async () => {
     const envolver = await peticion.json()
     const arreglo = await envolver.results;
     maquetadorDeCard(arreglo);
+    agregarCarrito(arreglo)
   } catch (error) {
     console.log(error)
   } 
-  agregarCarrito()
+  
 };
 
-function agregarCarrito () {
+function agregarCarrito (a) {
   const todosLosBotones = document.querySelectorAll(".boton-card")
   todosLosBotones.forEach(e => {e.onclick = ()=>{
     const id = e.id.slice(6)
     console.log(id)
+    const filtroNodoConArrayFetch = a.filter((e)=>{
+        return e.id === Number(id)
+    })
+    console.log(filtroNodoConArrayFetch)
   }
   })
 }

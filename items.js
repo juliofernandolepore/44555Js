@@ -2,7 +2,7 @@ const inputCarrito = document.querySelector(".inputCarrito")
 const contenedorCarrito = document.querySelector(".contenedorCarrito")
 const btnBuscarCarrito = document.querySelector(".botonBusquedaCarrito")
 const api = "https://api.mercadolibre.com/sites/MLA/search?q=";
-const carrito = [];
+let carrito = [];
 let preferencia =" ";
 
 btnBuscarCarrito.addEventListener('click', ()=>{
@@ -34,11 +34,14 @@ const fetchCustom = async () => {
     const arreglo = await envolver.results;
     maquetadorDeCard(arreglo);
     agregarCarrito(arreglo)
+    
   } catch (error) {
     console.log(error)
   } 
   
 };
+
+
 
 function agregarCarrito (a) {
   const todosLosBotones = document.querySelectorAll(".boton-card")
@@ -51,8 +54,25 @@ function agregarCarrito (a) {
     carrito.push(filtroNodoConArrayFetch)
   }
   })
+  
 }
 
+const carritoEnTiempoReal = ()=>{
+  let cart = "";
+  carrito.forEach((e) => {
+    cart += `              
+            <div class="card" style="width: 10rem;">
+                <img src="${e.thumbnail}" class="card-img-top p-1" alt="${e.title}">
+              <div class="card-body">
+                <h6 class="card-title">${e.title}</h6>
+                <h6>Estado: <b>${e.condition}</b><h6>
+                <h6>precio:<b>$${e.price}</b><h6>                  
+              </div>
+            </div>
+            `;
+  });
+  document.querySelector(".contenidoCarrito").innerHTML = cart
+  
+}
 
-
-
+carritoEnTiempoReal()

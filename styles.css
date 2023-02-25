@@ -13,16 +13,15 @@ body {
 .contenedor {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: start;
     justify-content: center;
-    text-align: center;
-	
+    text-align: center;	
 }
 
 .contenedorCarrito {
 	display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     text-align: center;
 	padding: 50px;

@@ -1,4 +1,3 @@
-/* ------------------------------------------------------------------ */
 const botonBusquedaInicio = document.querySelector(".botonBusquedaInicio");
 const inputBusquedaInicio = document.querySelector(".inputBusquedaInicio");
 const api = "https://api.mercadolibre.com/sites/MLA/search?q=";
@@ -11,18 +10,15 @@ const cargarArticulos = async () => {
     const respuesta = await fetch(`${api}${item}${limite}`);
     const todoElObjeto = await respuesta.json();
     const arreglo = await todoElObjeto.results;
-    console.log(todoElObjeto);
-    console.log(arreglo);
-    /* console.log(array.title) aca ya no se puede, necesito iterar el arreglo */
     let todosLosItems = "";
     todoElObjeto.results.forEach((e) => {
       todosLosItems += `              
               <div class="card" style="width: 10rem;">
                   <img src="${e.thumbnail}" class="card-img-top p-1" alt="${e.title}">
                 <div class="card-body">
-                  <h5 class="card-title">${e.title}</h5>
-                  <h5>Estado: ${e.condition}<h5>
-                  <h5>precio: $${e.price}<h5>                  
+                  <h6 class="card-title">${e.title}</h6>
+                  <h6>Estado: <b>${e.condition}</b><h6>
+                  <h6>precio:<b>$${e.price}</b><h6>                  
                 </div>
               </div>
               `;
@@ -40,8 +36,6 @@ botonBusquedaInicio.addEventListener('click', ()=>{
     item=""
   }
 })
-
-
 
 const fetchCustom1 = async (producto) => {
   const apiMercadolibre = "https://api.mercadolibre.com/sites/MLA/search?q=";
@@ -69,11 +63,6 @@ const fetchCustom2 = async (producto, marca) => {
       console.log(e, "error");
     });
 };
-
-/* busqueda.onsubmit = (e) => {
-  e.preventDefault();
-  fetchCustom1(inputBusqueda.value);
-}; */
 
 let carrito = [];
 

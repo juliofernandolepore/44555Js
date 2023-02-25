@@ -1,4 +1,3 @@
-/* --------------------------------------------------------------------------------- */
 const inputCarrito = document.querySelector(".inputCarrito")
 const contenedorCarrito = document.querySelector(".contenedorCarrito")
 const btnBuscarCarrito = document.querySelector(".botonBusquedaCarrito")
@@ -23,9 +22,9 @@ const fetchCustom = async () => {
                   <img src="${e.thumbnail}" class="card-img-top p-1" alt="${e.title}">
                 <div class="card-body">
                   <h5 class="card-title">${e.title}</h5>
-                  <h5>Estado: ${e.condition}<h5>
-                  <h5>precio: $${e.price}<h5>
-                  <h5 class="btn btn-primary">Agregar al carrito </h5>                 
+                  <h6>Estado: <b>${e.condition}</b><h6>
+                  <h6>precio:<b>$${e.price}</b><h6>
+                  <h6 class="btn btn-primary">Agregar al carrito </h6>                 
                 </div>
               </div>
               `;

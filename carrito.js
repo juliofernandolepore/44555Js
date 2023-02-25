@@ -1,4 +1,4 @@
-//const btnVaciarCarrito = document.querySelector("#vaciar")
+const btnVaciarCarrito = document.querySelector("#vaciar")
 const informacionDelLocalStorage = JSON.parse(localStorage.getItem("carrito"))
 
 const cardDelete = (datosbrutos)=>{
@@ -21,3 +21,9 @@ function vaciarCarrito (){
 }
 
 cardDelete(informacionDelLocalStorage)
+
+btnVaciarCarrito.addEventListener("click", ()=>{
+    vaciarCarrito()
+    cardDelete(informacionDelLocalStorage)
+    document.querySelector(".contenido-carrito").innerHTML = "<h2>El carrito ahora esta vacio</h2>";    
+})

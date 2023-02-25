@@ -45,12 +45,14 @@ function agregarCarrito (a) {
   todosLosBotones.forEach(e => {e.onclick = ()=>{
     const id = e.id.slice(6)
     console.log(id)
-    const filtroNodoConArrayFetch = a.filter((e)=>{
-        return e.id === Number(id)
+    const filtroNodoConArrayFetch = a.find((e)=>{
+        return e.id == id
     })
-    console.log(filtroNodoConArrayFetch)
+    carrito.push(filtroNodoConArrayFetch)
   }
   })
 }
+
+
 
 
